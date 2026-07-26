@@ -9,7 +9,6 @@ from app.core.config import settings
 def create_access_token(data: Dict[str, Any], expires_minutes: int = 30) -> str:
     to_encode: Dict[str, Any] = data.copy()
     expire = datetime.now(timezone.utc) + timedelta(minutes=expires_minutes)
-    # use UNIX timestamp for the exp claim so it's JSON-serializable
     to_encode.update({"exp": int(expire.timestamp())})
     encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM)
     return encoded_jwt

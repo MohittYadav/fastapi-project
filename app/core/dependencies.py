@@ -1,6 +1,4 @@
-from fastapi import Header, HTTPException, status
-from fastapi.security import APIKeyHeader
-
+from fastapi import Header, HTTPException
 from app.core.config import settings
 from app.core.security import verify_token
 
